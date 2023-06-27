@@ -9,7 +9,7 @@ export default class extends Controller {
 
   handleClick() {
     Swal.fire({
-      title: 'Votre demande a bien été envoyée !!!',
+      title: 'Seu oponente foi notificado, agora ele deve aceitar o desafio!',
       width: 500,
       padding: '3em',
       color: '#253343',

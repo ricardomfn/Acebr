@@ -1,0 +1,246 @@
+        <% unless @matches_user.empty? %>
+          <% if @matches_user.last.winner.present? %>
+            <% @matches_user.each do |match| %>
+              <% unless match.winner.nil? %>
+              <div class="small-card mt-0 mb-2 shadow-card" id="card-hist">
+                <div>
+                  <% if match.winner != match.user.nickname %>
+                    <% loser_request = Request.where(match: match).first %>
+                    <% loser = loser_request.user if loser_request %>
+                    <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                  <% else %>
+                    <% loser = match.user %>
+                    <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                  <% end %>
+                </div>
+                <div class="m-1 card-titre-gras">
+                  <%= link_to match.winner, user_profile_path(User.where(nickname: match.winner).first) %>
+                </div>
+                <div class="m-1">
+                  <%= match.winner_score %>
+                </div>
+                <div class="m-1">
+                  <%= "x" %>
+                </div>
+                <div class="m-1">
+                  <%= match.loser_score %>
+                </div>
+                <div class="card-titre-gras">
+                  <% if match.winner == match.user.nickname %>
+                    <% loser_request = Request.where(match: match).first %>
+                    <% loser_nickname = loser_request.user.nickname if loser_request %>
+                    <%= link_to loser_nickname, user_profile_path(loser_request.user) %>
+                  <% else %>
+                    <%= link_to match.user.nickname, user_profile_path(match.user) %>
+                  <% end %>
+                </div>
+                <div>
+                  <% if match.winner == match.user.nickname %>
+                    <% loser_request = Request.where(match: match).first %>
+                    <% loser = loser_request.user if loser_request %>
+                    <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                  <% else %>
+                    <% loser = match.user %>
+                    <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                  <% end %>
+                </div>
+                <div>
+                  <div class="left-icon">
+                    <% if match.winner == current_user.nickname %>
+                      <i class="fa-solid fa-trophy"></i>
+                    <% else %>
+                      <i class="fa-solid fa-trophy" id="hidden-medal"></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% unless @request_user.empty? %>
+          <% if @request_user.last.match.winner.present? %>
+            <% @request_user.each do |request| %>
+              <% unless request.match.winner.nil? %>
+                <div class="small-card shadow-card" id="card-hist">
+                  <div>
+                    <% if request.match.winner != request.user.nickname %>
+                      <% loser = request.match.user if request%>
+                      <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                    <% else %>
+                      <% loser = request.user %>
+                      <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                    <% end %>
+                  </div>
+                  <div class="m-1 card-titre-gras">
+                    <%= link_to request.match.winner, user_profile_path(request.user) %>
+                  </div>
+                  <div class="m-1">
+                    <%= request.match.winner_score %>
+                  </div>
+                  <div class="m-1">
+                    <%= "x" %>
+                  </div>
+                  <div class="m-1">
+                    <%= request.match.loser_score %>
+                  </div>
+                  <div class="card-titre-gras">
+                    <% if request.match.winner == request.match.user.nickname %>
+                      <% loser_nickname = request.user.nickname if request%>
+                      <%= link_to loser_nickname, user_profile_path(request.match.user) %>
+                    <% else %>
+                      <% loser = request.match.user.nickname %>
+                      <%= link_to loser, user_profile_path(request.match.user) %>
+                    <% end %>
+                  </div>
+                  <div>
+                    <% if request.match.winner == request.match.user.nickname %>
+                      <% loser = request.user if request %>
+                      <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                    <% else %>
+                      <% loser = request.match.user %>
+                      <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                    <% end %>
+                  </div>
+                  <div>
+                    <div class="left-icon">
+                      <% if request.match.winner == current_user.nickname %>
+                        <i class="fa-solid fa-trophy"></i>
+                      <% else %>
+                        <i class="fa-solid fa-trophy" id="hidden-medal"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+        <% unless @matches_user.empty? %>
+          <% if @matches_user.first.winner.present? %>
+            <% @matches_user.each do |match| %>
+              <div class="small-card mt-0 mb-2 shadow-card" id="card-hist">
+                <div>
+                  <% if match.winner != match.user.nickname %>
+                    <% loser_request = Request.where(match: match).first %>
+                    <% loser = loser_request.user if loser_request %>
+                    <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                  <% else %>
+                    <% loser = match.user %>
+                    <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                  <% end %>
+                </div>
+                <div class="m-1 card-titre-gras">
+                  <%= link_to match.winner, user_profile_path(User.where(nickname: match.winner).first) %>
+                </div>
+                <div class="m-1">
+                  <%= match.winner_score %>
+                </div>
+                <div class="m-1">
+                  <%= "x" %>
+                </div>
+                <div class="m-1">
+                  <%= match.loser_score %>
+                </div>
+                <div class="card-titre-gras">
+                  <% if match.winner == match.user.nickname %>
+                    <% loser_request = Request.where(match: match).first %>
+                    <% loser_nickname = loser_request.user.nickname if loser_request %>
+                    <%= link_to loser_nickname, user_profile_path(loser_request.user) %>
+                  <% else %>
+                    <%= link_to match.user.nickname, user_profile_path(match.user) %>
+                  <% end %>
+                </div>
+                <div>
+                  <% if match.winner == match.user.nickname %>
+                    <% loser_request = Request.where(match: match).first %>
+                    <% loser = loser_request.user if loser_request %>
+                    <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                  <% else %>
+                    <% loser = match.user %>
+                    <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                  <% end %>
+                </div>
+                <div>
+                  <div class="left-icon">
+                    <% if match.winner == current_user.nickname %>
+                      <i class="fa-solid fa-trophy"></i>
+                    <% else %>
+                      <i class="fa-solid fa-trophy" id="hidden-medal"></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% unless @request_user.empty? %>
+          <% @request_user.each do |request| %>
+            <% if @request_user.first.match.winner.present? %>
+            <div class="small-card shadow-card" id="card-hist">
+              <div>
+                <% if request.match.winner != request.user.nickname %>
+                  <% loser = request.match.user if request%>
+                  <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                <% else %>
+                  <% loser = request.user %>
+                  <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                <% end %>
+              </div>
+              <div class="m-1 card-titre-gras">
+                <%= link_to request.match.winner, user_profile_path(request.user) %>
+              </div>
+              <div class="m-1">
+                <%= request.match.winner_score %>
+              </div>
+              <div class="m-1">
+                <%= "x" %>
+              </div>
+              <div class="m-1">
+                <%= request.match.loser_score %>
+              </div>
+              <div class="card-titre-gras">
+                <% if request.match.winner == request.match.user.nickname %>
+                  <% loser_nickname = request.user.nickname if request%>
+                  <%= link_to loser_nickname, user_profile_path(request.match.user) %>
+                <% else %>
+                  <% loser = request.match.user.nickname %>
+                  <%= link_to loser, user_profile_path(request.match.user) %>
+                <% end %>
+              </div>
+              <div>
+                <% if request.match.winner == request.match.user.nickname %>
+                  <% loser = request.user if request %>
+                  <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                <% else %>
+                  <% loser = request.match.user %>
+                  <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
+                <% end %>
+              </div>
+              <div>
+                <div class="left-icon">
+                  <% if request.match.winner == current_user.nickname %>
+                    <i class="fa-solid fa-trophy"></i>
+                  <% else %>
+                    <i class="fa-solid fa-trophy" id="hidden-medal"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        <% end %>

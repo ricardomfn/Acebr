@@ -2,37 +2,38 @@
   <div class="footer-links">
 
     <div class="logo-footer">
-      <%= link_to matches_path, class: "" do %>
+      <%= link_to home_path, class: "" do %>
         <i class="fa-solid fa-house"></i>
-        <p>Home</p>
+        <p>News</p>
       <% end %>
     </div>
 
     <div class="logo-footer">
       <%= link_to matches_path, class: "" do %>
-        <i class="fa-solid fa-map" data-action="click->map-display#toggleDivs"></i>
-        <p>Carte</p>
+        <i class="fa-solid fa-trophy"></i>
+        <%# <i class="fa-solid fa-table-list" data-action="click->map-display#toggleDivs"></i> %>
+        <p>Jogos</p>
       <% end %>
     </div>
 
     <div class="logo-footer logo-match">
       <%= link_to new_match_path, class: "" do %>
         <i class="fa-solid fa-baseball fa-2xl"></i>
-        <p>Match</p>
+        <p>Novo jogo</p>
       <% end %>
     </div>
 
     <div class="logo-footer">
       <%= link_to profile_path, class: "" do %>
         <i class="fa-solid fa-user"></i>
-        <p>Profil</p>
+        <p>Perfil</p>
       <% end %>
     </div>
 
     <div class="logo-footer">
       <%= link_to dashboard_path, class: "" do %>
-        <i class="fa-solid fa-message"></i>
-        <p>Message</p>
+        <i class="fa-solid fa-bell"></i>
+        <p>Notificações</p>
       <% end %>
     </div>
 

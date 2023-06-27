@@ -5,12 +5,12 @@
         <p>ACE</p>
 
         <% if user_signed_in? %>
-          <%= link_to matches_path do %>
-          <button class="discover" data-action="click->circle#transition">Discover</button>
+          <%= link_to home_path do %>
+          <button class="discover" data-action="click->circle#transition">Entrar</button>
           <% end %>
         <% else %>
           <%= link_to user_session_path do %>
-          <button class="discover" data-action="click->circle#transition">Discover</button>
+          <button class="discover" data-action="click->circle#transition">Entrar</button>
         <% end %>
         <% end %>
       </div>

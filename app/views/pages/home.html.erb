@@ -1,0 +1,62 @@
+<body class="jaune">
+  <div>
+    <div class="font-card">
+      <div class="div-global">
+        <div class="search-home">
+          <p>ACE</p>
+        </div>
+        <div class="center-news">
+          <p class="news">News</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+
+<div class="devant-card">
+  <div class="container bloc transition">
+    <div class="card-product">
+      <% unless @matches.empty? %>
+        <% @matches.order(date: :desc).group_by { |match| match.date.to_date }.each do |date, matches| %>
+          <h2 class="text-center fs-5"><strong><%= I18n.l(date, format: :short)%></strong></h2>
+          <% matches.each do |match| %>
+            <div class="small-card mt-0 mb-2 shadow-card" id="card-hist">
+              <div>
+                <% winner_user = User.where(nickname: match.winner).first %>
+                <%= cl_image_tag winner_user.photo.key, class: "avatar m-2"%>
+              </div>
+              <div class="m-1 card-title-hist-bold">
+                <%= link_to match.winner, user_profile_path(winner_user) %>
+              </div>
+              <div class="m-1">
+                <%= match.winner_score %>
+              </div>
+              <div class="m-1">
+                <%= "x" %>
+              </div>
+              <div class="m-1">
+                <%= match.loser_score %>
+              </div>
+              <div class="card-title-hist-bold">
+                <% loser_user = User.where(nickname: match.loser).first %>
+                <%= link_to match.loser, user_profile_path(loser_user) %>
+              </div>
+              <div>
+                <%= cl_image_tag loser_user.photo.key, class: "avatar m-2"%>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+    <%= render 'shared/footer' %>
+  </div>
+</body>

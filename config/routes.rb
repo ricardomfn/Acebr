@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get 'profile/show'
   get 'stimulus/popup'
+
   devise_for :users
+  devise_scope :user do
+    get 'users/:id', to: 'users#show', as: 'user_profile'
+    post 'users/:id/challenge', to: 'users#challenge', as: 'challenge_user'
+  end
+
   root to: "pages#desk"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
@@ -14,6 +21,7 @@ Rails.application.routes.draw do
   get "games", to: "requests#games"
   get "dashboard", to: "pages#dashboard"
   get "desk", to: "pages#desk"
+  get "home", to: "pages#home"
 
   resources :leagues do
     resources :memberships, only: [ :new, :create ]
