@@ -6,17 +6,15 @@
           <%# <%= render 'shared/navbar_index' %>
           <p>ACE</p>
         </div>
-        <div class="ace-regul">
-          <%= render 'search_bar'%>
+        <div class="center-news">
+          <p class="news">Jogos</p>
         </div>
       </div>
 
 
       <div class="devant-card" data-map-display-target="bloc">
         <%= render 'card', matches: @matches%>
-        <%= render 'shared/publicite' %>
       </div>
-      <%= render 'map_display' %>
     </div>
     <%= render 'shared/footer' %>
   </div>

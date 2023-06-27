@@ -24,7 +24,7 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
     @league.user = current_user
-  
+
     if @league.save
       redirect_to new_league_membership_path(@league), notice: "League was successfully created."
     else
@@ -36,7 +36,11 @@ class LeaguesController < ApplicationController
   end
 
   def destroy
+    @league = League.find(params[:id])
+    @league.destroy
+    redirect_to profile_path, notice: "League deleted successfully."
   end
+
 
   private
 

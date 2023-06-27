@@ -1,0 +1,113 @@
+<%= render 'shared/navbar_general' %>
+ <div class="league-container image-fond">
+    <div class="container text-center mb-0"> <!-- Added 'text-center' class -->
+      <div class="profile" style="margin-bottom: 20px; margin-top: 20px">
+        <%= cl_image_tag @user.photo.key, class: "profile-avatar avatar-bordered img-fluid rounded-circle"%>
+        <h1 class="title"><%= @user.nickname %></h1>
+        <div class="fade-wrapper mt-3 mb-4">
+          <h4 style="font-size: 22px; font-weight: bold;"><%= @user.points %>pts</h4>
+        </div>
+      </div>
+  </div>
+
+      <div class="boutons-profil">
+        <ul class="nav nav-pills nav-fill" id="" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="menu-bar active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Ligas</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="menu-bar " id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Histórico</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="classement ", style="padding-top: 10px;">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+            <% @leagues.each do |league| %>
+              <%= link_to league_path(league) do %>
+                <div class="small-card mt-0 carte-ligues mb-2 shadow-card", style="width: 360px; margin: auto;">
+                    <%= image_tag league.image, class: "rounded-league-image m-3", style: "width: 40px; height: 40px;" %>
+                    <h4 class="card-titre-gras"><%= league.name %></h4>
+                    <p class="card-text icone-participants" style="margin-left: auto; margin-right: auto;">  <%= league.memberships.count %><i class="fa-solid fa-user-group" style="color: #253343; padding-left: 5px;"></i></p>
+
+                    <%# <div class="arrow">
+                    <i class="fa-solid fa-arrow-right fa-xl m-3" style="color: #253343;"></i>
+                    </div> %>
+                </div>
+              <% end %>
+            <%end%>
+
+            <div data-controller="popup">
+              <%= form_with url: challenge_user_path(@user), method: :post do |f| %>
+                <%= f.submit 'Desafiar', class: 'btn-ace mt-3', data: { action: 'click->popup#handleClick' }, style: 'color: #EBF95E' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade ms-3" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0" >
+
+          <div class="devant-card">
+            <div class="container bloc transition">
+              <div class="card-product">
+                <% unless @matches.empty? %>
+                  <% @matches.order(date: :desc).group_by { |match| match.date.to_date }.each do |date, matches| %>
+                    <h2 class="text-center fs-5"><strong><%= I18n.l(date, format: :short) %></strong></h2>
+                    <% matches.each do |match| %>
+                      <% winner_user = User.where(nickname: match.winner).first %>
+                      <% loser_user = User.where(nickname: match.loser).first %>
+                      <% next unless winner_user == @user || loser_user == @user %>
+                      <div class="small-card mt-0 mb-2 shadow-card" id="card-hist">
+                        <div>
+                          <%= cl_image_tag @user.photo.key, class: "avatar m-2" %>
+                        </div>
+                        <div class="m-1 card-title-hist-bold">
+                          <%= @user.nickname %>
+                        </div>
+                        <div class="m-1">
+                          <% if match.winner == @user.nickname %>
+                            <%= match.winner_score %>
+                          <% else %>
+                            <%= match.loser_score %>
+                          <% end %>
+                        </div>
+                        <div class="m-1">
+                          <%= "x" %>
+                        </div>
+                        <div class="m-1">
+                          <% if match.winner == @user.nickname %>
+                            <%= match.loser_score %>
+                          <% else %>
+                            <%= match.winner_score %>
+                          <% end %>
+                        </div>
+                        <div class="card-title-hist-light">
+                          <% if match.winner == @user.nickname %>
+                            <%= link_to match.loser, user_profile_path(loser_user) %>
+                          <% else %>
+                            <%= link_to match.winner, user_profile_path(winner_user) %>
+                          <% end %>
+                        </div>
+                        <div>
+                          <% if match.winner == @user.nickname %>
+                            <%= cl_image_tag loser_user.photo.key, class: "avatar m-2" %>
+                          <% else %>
+                            <%= cl_image_tag winner_user.photo.key, class: "avatar m-2" %>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+
+
+    <!-- History section -->

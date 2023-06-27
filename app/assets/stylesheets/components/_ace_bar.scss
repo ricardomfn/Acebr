@@ -19,7 +19,7 @@
 }
 
 .div-global{
-  height: 45vh;
+  height: 38vh;
   background-color: #EAF959;
 }
 
@@ -46,6 +46,23 @@ text-align: center;
 padding-left: 31%;
 color: #253343;
 }
+
+.news {
+  font-family: 'CherryBomb-Regular';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 32px;
+  color: #253343;
+}
+
+.center-news {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12vh; /* Adjust this value based on your layout */
+}
+
+
 
 .font-card {
   background-color: #EAF959;

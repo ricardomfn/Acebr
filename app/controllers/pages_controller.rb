@@ -5,8 +5,6 @@ class PagesController < ApplicationController
 
   def profile
     user = current_user.id
-    # membership = Membership.find(params[])
-    # @leagues = League.where(user_id: user)
     members = Membership.where(user_id: user)
     @leagues = []
     members.each do |member|
@@ -14,7 +12,9 @@ class PagesController < ApplicationController
     end
     @matches_user = Match.where(user_id: current_user)
     @request_user = Request.where(user_id: current_user)
+    @matches = Match.where.not(winner: nil)
   end
+
 
   def dashboard
     @requests = []
@@ -24,5 +24,9 @@ class PagesController < ApplicationController
   end
 
   def desk
+  end
+
+  def home
+    @matches = Match.where.not(winner: nil)
   end
 end

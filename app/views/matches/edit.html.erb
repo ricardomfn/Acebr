@@ -1,7 +1,7 @@
 <%= render 'shared/navbar_general' %>
 
 <div class="text-center mb-4 mt-4">
-  <h1 style="color: #253343; font-size: 26px;"><strong>Indiquez le gagnant du défi</strong></h1>
+  <h1 style="color: #253343; font-size: 26px;"><strong>Indique o ganhador:</strong></h1>
 </div>
 
 <%= simple_form_for(@match) do |f| %>
@@ -16,24 +16,24 @@
               label: "" %>
 
   <div class="text-center mb-4 mt-5">
-    <h1 style="color: #253343; font-size: 26px;"><strong>Rentrez le score</strong></h1>
+    <h1 style="color: #253343; font-size: 26px;"><strong>Indique o placar:</strong></h1>
   </div>
 
   <div class="score-fields d-flex justify-content-center">
     <div class="score-field text-align">
       <%= f.input :winner_score,
                   as: :select,
-                  collection: 1..8,
+                  collection: 0..8,
                   include_blank: false,
-                  label: "Gagnant",
+                  label: "Ganhador",
                   input_html: { class: 'score-selector' } %>
     </div>
     <div class="score-field text-align">
       <%= f.input :loser_score,
                   as: :select,
-                  collection: 1..8,
+                  collection: 0..8,
                   include_blank: false,
-                  label: "Perdant",
+                  label: "Perdedor",
                   input_html: { class: 'score-selector' } %>
     </div>
   </div>
@@ -41,7 +41,7 @@
 
 
   <div class="d-flex justify-content-center">
-    <%= f.submit "Valider", class: "btn-ace mt-4" %>
+    <%= f.submit "Confirmar", class: "btn-ace mt-4" %>
   </div>
 
 <% end %>

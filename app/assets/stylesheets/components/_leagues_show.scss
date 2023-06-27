@@ -90,6 +90,7 @@
   background-color: white;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  padding-right:10px;
 }
 
 .ranking-cards {
@@ -139,4 +140,20 @@
   font-family: CherryBomb-Regular;
   font-style: normal;
   font-weight: 400;
+}
+
+.card-title-hist-light {
+  color: #253343;
+  font-style: normal;
+}
+
+.card-title-hist-bold {
+  color: #253343;
+  font-style: normal;
+  font-weight: bold;
+}
+
+
+.admin-text {
+  font-weight: bold;
 }
