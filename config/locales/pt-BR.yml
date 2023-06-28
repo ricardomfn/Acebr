@@ -3,6 +3,10 @@ pt-BR:
     attributes:
       user:
         current_password: "Senha atual"
+    errors:
+      messages:
+        record_invalid: "Não foi possível salvar o registro."
+
   date:
     formats:
       long: "%d de %B de %Y"

@@ -39,7 +39,6 @@ user1 = User.new({
     { email: "romeu@gmail.com", first_name: "Romeu", last_name: "", nickname: "Romeu", birth_date: "", points: 1500 },
     { email: "junior.lemos@gmail.com", first_name: "Junior", last_name: "Lemos", nickname: "Junior Lemos", birth_date: "", points: 1500 },
     { email: "fred@gmail.com", first_name: "Fred", last_name: "", nickname: "Fred", birth_date: "", points: 1500 },
-    { email: "mateus@gmail.com", first_name: "Mateus", last_name: "", nickname: "Mateus", birth_date: "", points: 1500 },
     { email: "sandro@gmail.com", first_name: "Sandro", last_name: "", nickname: "Sandro", birth_date: "", points: 1500 },
     { email: "paulo.pantusa@gmail.com", first_name: "Paulo", last_name: "Pantusa", nickname: "Paulo Pantusa", birth_date: "", points: 1500 },
     { email: "edinho@gmail.com", first_name: "Edinho", last_name: "", nickname: "Edinho", birth_date: "", points: 1500 },
@@ -62,7 +61,14 @@ user1 = User.new({
     { email: "carlos@gmail.com", first_name: "Carlos", last_name: "", nickname: "Carlos", birth_date: "", points: 1500 },
     { email: "dudumytsuka@gmail.com", first_name: "Dudu Mytsuka", last_name: "", nickname: "Dudu Mytsuka", birth_date: "", points: 1500 },
     { email: "cayo@gmail.com", first_name: "Cayo", last_name: "", nickname: "Cayo", birth_date: "", points: 1500 },
-    { email: "tales@gmail.com", first_name: "Tales", last_name: "", nickname: "Tales", birth_date: "", points: 1500 }
+    { email: "tales@gmail.com", first_name: "Tales", last_name: "", nickname: "Tales", birth_date: "", points: 1500 },
+    { email: "diogenes@gmail.com", first_name: "Diogenes", last_name: "", nickname: "Diogenes", birth_date: "", points: 1200 },
+    { email: "eduardo@gmail.com", first_name: "Eduardo", last_name: "", nickname: "Eduardo", birth_date: "", points: 1200 },
+    { email: "inacio@gmail.com", first_name: "Inacio", last_name: "", nickname: "Inacio", birth_date: "", points: 1200 },
+    { email: "bruno@gmail.com", first_name: "Bruno", last_name: "", nickname: "Bruno", birth_date: "", points: 1200 },
+    { email: "mateus@gmail.com", first_name: "Mateus", last_name: "", nickname: "Mateus", birth_date: "", points: 1200 },
+    { email: "marcelo@gmail.com", first_name: "Marcelo", last_name: "", nickname: "Marcelo", birth_date: "", points: 1200 },
+    { email: "lucas@gmail.com", first_name: "Lucas", last_name: "", nickname: "Lucas", birth_date: "", points: 1200 }
   ]
 
 # Create users and update their points
