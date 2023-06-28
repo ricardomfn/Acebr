@@ -16,25 +16,15 @@ def read_csv_and_update_elo_ratings
     winner = capitalize_names(winner_names)
     loser = capitalize_names(loser_names)
 
-<<<<<<< HEAD
-    p match = {
-      date: row[0],
-      winner: winner,
-      loser: loser,
-      winner_score: row['score1'].to_i,
-      loser_score: row['score2'].to_i
-=======
     match = {
       date: Date.parse(row[0]),
       winner: winner,
       loser: loser,
       winner_score: row['winner_score'].to_i,
       loser_score: row['loser_score'].to_i
->>>>>>> 79fbb264b6f06cc41efd074517396bd3940c8217
     }
   end
 end
-
 
 def update_elo_ratings
   @histmatches.each do |match|
