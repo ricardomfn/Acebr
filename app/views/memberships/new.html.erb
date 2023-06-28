@@ -9,14 +9,14 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control me-3 ms-2 recherche",
-            placeholder: "recherche un joueur"
+            placeholder: "Buscar jogador"
           %>
           <%= submit_tag "Ace !", class: "btn-ace btn-modif" %>
         <% end %>
         <div class="text-center">
           <%= simple_form_for [@league, @membership] do |f| %>
             <%= f.input :user, collection: @user_collection, input_html: {multiple: true, class: "multiple-select ajouter"}, include_hidden: false, label:false %>
-            <%= f.submit "Ajouter", class: 'btn-ace mt-4 ' %>
+            <%= f.submit "Convidar", class: 'btn-ace mt-4 ' %>
           <% end %>
         </div>
       </div>

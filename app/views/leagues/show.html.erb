@@ -65,10 +65,10 @@
 
     <% if @league.user == current_user %>
       <button class="btn-ace m-5">
-        <%= link_to "Ajouter un membre", new_league_membership_path(@league), style: "color: white" %>
+        <%= link_to "Convidar jogador", new_league_membership_path(@league), style: "color: #EBF95E" %>
       </button>
       <button class="btn-ace m-1">
-        <%= link_to "Delete", league_path(@league), data: { turbo_method: :delete, confirm: "Are you sure you want to delete this league?" }, style: "color: white" %>
+        <%= link_to "Apagar liga", league_path(@league), data: { turbo_method: :delete, confirm: "Are you sure you want to delete this league?" }, style: "color: #EBF95E" %>
       </button>
     <% end %>
   </div>
