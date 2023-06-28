@@ -27,7 +27,7 @@ end
 
 def update_elo_ratings
   @histmatches.each do |match|
-    @userwinner = User.where(nickname: match[:winner]).first
+    p @userwinner = User.where(nickname: match[:winner]).first
     @userloser = User.where(nickname: match[:loser]).first
     k_factor = 32
     expected_score_winner = 1.0 / (1 + 10**(((@userloser&.points || 1500) - (@userwinner&.points || 1500)) / 400.0))
@@ -36,12 +36,13 @@ def update_elo_ratings
     points_change_loser = k_factor * (0 - expected_score_loser)
     @userwinner.points += points_change_winner if @userwinner
     @userloser.points += points_change_loser if @userloser
-    @userwinner.save if @userwinner
-    @userloser.save if @userloser
+    @userwinner.save! if @userwinner
+    @userloser.save! if @userloser
   end
 end
 
 # Run the method to update Elo ratings
 read_csv_and_update_elo_ratings
+update_elo_ratings
 
 #rails runner "require './lib/elo_update'; update_elo_ratings"
