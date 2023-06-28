@@ -1,4 +1,4 @@
-<h2 class="title mb-4 text-center">Inscription</h2>
+<h2 class="title mb-4 text-center">Cadastre-se</h2>
 <div class="container">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "your-form-class" }) do |f| %>
     <%= f.error_notification %>
@@ -12,46 +12,46 @@
       <%= f.input :nickname,
         required: true,
         input_html: { autocomplete: "nickname", class: "create-input transparent-input" },
-        label: "Nom d'utilisateur" %>
+        label: "Usuário" %>
 
       <%= f.input :first_name,
         required: true,
         input_html: { autocomplete: "first_name", class: "create-input transparent-input" },
-        label: "Prénom" %>
+        label: "Nome" %>
 
       <%= f.input :last_name,
         required: true,
         input_html: { autocomplete: "last_name", class: "create-input transparent-input" },
-        label: "Nom de famille" %>
+        label: "Sobrenome" %>
 
       <%= f.input :birth_date,
           as: :string,
           input_html: { data: { controller: "datepicker" }, class: "create-input transparent-input" },
-          label: "Date de naissance" %>
+          label: "Data de nascimento" %>
 
       <%= f.input :password,
         required: true,
         hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
         input_html: { autocomplete: "new-password", class: "create-input transparent-input" },
-        label: "Mot de passe" %>
+        label: "Senha" %>
 
       <%= f.input :password_confirmation,
         required: true,
         input_html: { autocomplete: "new-password", class: "create-input transparent-input" },
-        label: "Confirmer mot de passe" %>
+        label: "Confirmar senha" %>
 
       <%= f.input :points,
         required: true,
-        collection: [['Jamais joué', 0],['Débutant', 200],['Intermédiaire', 400],['Confirmé', 600],['Expert', 800],['Élite', 1000]],
+        collection: [['Iniciante - 500pts', 500],['5a classe - 900pts', 900],['4a classe - 1200pts', 1200],['3a classe - 1300pts', 1300],['2a classe - 1400pts', 1400],['1a classe - 1700pts', 1700]],
         input_html: { autocomplete: "points", class: "create-input transparent-input" },
-        label: "Comment jugez-vous votre niveau?" %>
+        label: "Como você julga seu nível de jogo?" %>
 
       <%= f.input :photo, as: :file %>
     </div>
 
     <div class="form-actions">
-        <%= f.button :submit, "S'inscrire", class: "btn-ace mt-3 mb-3 w-100" %>
-        <%= link_to "Se connecter", new_session_path(resource_name), class: "btn-ace btn w-100" %>
+        <%= f.button :submit, "Cadastrar", class: "btn-ace mt-3 mb-3 w-100" %>
+        <%= link_to "Se conectar", new_session_path(resource_name), class: "btn-ace btn w-100" %>
     </div>
   <% end %>
 </div>

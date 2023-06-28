@@ -1,4 +1,8 @@
 pt-BR:
+  activerecord:
+    attributes:
+      user:
+        current_password: "Senha atual"
   date:
     formats:
       long: "%d de %B de %Y"

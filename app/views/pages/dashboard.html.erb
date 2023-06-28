@@ -4,11 +4,11 @@
 
   <div class="d-flex">
     <div class="column">
-      <button data-action="click->message#showMessage" class="column-button">Notifications</button>
+      <button data-action="click->message#showMessage" class="column-button">Notificações</button>
     </div>
 
     <div class="column">
-      <button data-action="click->message#showNotification" class="column-button">Messages</button>
+      <button data-action="click->message#showNotification" class="column-button">Mensagens </button>
     </div>
   </div>
 
@@ -37,9 +37,14 @@
                 <p style='color: gray'>Há <%= difference_days %> dias</p>
               <% end %>
               <h2> Você desafiou <%= request.match.user.nickname %>!</h2>
+                <% if request.status == "pending" %>
+                <p style="color: grey"><strong> Aguarde <%= request.match.user.nickname %> aceitar </strong> </p>
+                <% end %>
               <%# <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%>
               <% if request.status == "refused" %>
-              <p style="color: grey"><strong> Desafio cancelado </strong> </p>
+              <p><strong> Desafio recusado </strong> </p>
+              <% elsif request.status == "accepted" %>
+              <p style="color: grey"><strong> Desfio aceito, <%= request.match.user.nickname %> deve entrar o placar</strong> </p>
               <% end %>
             </div>
             <div data-toggle-target="content">
@@ -53,7 +58,7 @@
             </div>
           </div>
         <% else %>
-          <% if request.status == "accepted" && request.match.match_type == "Défi" %>
+          <% if request.status == "accepted" && request.match.match_type == "Desafio" %>
             <% first_print_date = request.updated_at %>
             <% current_date = Time.now %>
           <% difference_minutes= ((current_date - first_print_date) /60).round %>
@@ -72,7 +77,7 @@
               <% else %>
                 <p style='color: gray'>Há <%= difference_days %> dias</p>
               <% end %>
-              <h2 style="color: #253343;"> Indique o placar do jogo com <%= request.user.nickname %></h2>
+              <h2 style="color: #253343;"> Entre o placar do jogo com <%= request.user.nickname %></h2>
               </div>
               <div data-toggle-target="content">
                 <button class="btn-ace"><%= link_to "Placar", edit_match_path(request.match), class: "" %></button>
@@ -103,7 +108,7 @@
               <% if request.status == "refused" %>
               <p><strong> Desafio recusado </strong> </p>
               <% elsif request.status == "accepted" %>
-              <p style="color: grey"><strong> Desfio aceito</strong> </p>
+              <p style="color: grey"><strong> Desfio aceito, não se esqueça de entrar o placar</strong> </p>
               <% end %>
             </div>
             <div data-toggle-target="content">

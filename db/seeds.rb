@@ -84,8 +84,8 @@ end
 
 match1 = Match.new({
   address: "68 Avenue Parmentier, 75011, Paris",
-  match_type: "Défi",
-  modality: "Simple",
+  match_type: "Desafio",
+  modality: "Simples",
   price: "10",
   level: "500",
   date: DateTime.now

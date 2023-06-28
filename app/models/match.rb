@@ -1,6 +1,6 @@
 class Match < ApplicationRecord
-  TYPES = ['Amical', 'Défi']
-  MODALITIES = ['Simple', 'Double']
+  TYPES = ['Amistoso', 'Desafio']
+  MODALITIES = ['Simples', 'Duplas']
   belongs_to :user
   has_many :requests, dependent: :destroy
   validates :address, presence: true

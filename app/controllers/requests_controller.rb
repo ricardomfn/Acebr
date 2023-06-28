@@ -22,6 +22,7 @@ class RequestsController < ApplicationController
 
   def create
     @match = Match.find(params[:match_id])
+    raise
     @request = Request.new
     @request.match = @match
     @request.user = current_user
