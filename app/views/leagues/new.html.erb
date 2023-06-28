@@ -10,17 +10,17 @@
     <div data-multi-form-target="ligne" >___________</div>
     <div>
       <p class="number-wrapper">2</p>
-      <p class="label">Nom</p>
+      <p class="label">Nome</p>
     </div>
   </div>
 
 
   <div class="text-center mb-4 mt-4" data-multi-form-target="link">
-    <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular;"><strong>Choisis ton logo</strong></h1>
+    <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular;"><strong>Escolha uma logo</strong></h1>
   </div>
 
   <div class="text-center mb-4 mt-4 hide" data-multi-form-target="nom">
-    <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular; margin-bottom: 20px;"><strong>Nom de la ligue</strong></h1>
+    <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular; margin-bottom: 20px;"><strong>Nome da liga</strong></h1>
   </div>
 
 <%= simple_form_for(@league) do |f| %>
@@ -43,10 +43,10 @@
 
   <div class="text-center hide" data-multi-form-target="naming">
     <%= f.input :name, input_html: { class: 'name-field centered-input' }, label:false %>
-    <%= f.button :submit, "Création", class: "btn-ace mt-4" %>
+    <%= f.button :submit, "Criar", class: "btn-ace mt-4" %>
   </div>
   <% end %>
 
-<button class= 'btn-ace mt-4  cent' data-action="click->multi-form#hideLogo" data-multi-form-target="suivant" disabled>Suivant</button>
+<button class= 'btn-ace mt-4  cent' data-action="click->multi-form#hideLogo" data-multi-form-target="suivant" disabled>Próximo</button>
 
 </div>
