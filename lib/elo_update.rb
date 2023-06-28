@@ -16,10 +16,12 @@ def read_csv_and_update_elo_ratings
     winner = capitalize_names(winner_names)
     loser = capitalize_names(loser_names)
 
-    {
-      date: row['date'],
+    p match = {
+      date: row[0],
       winner: winner,
-      loser: loser
+      loser: loser,
+      winner_score: row['score1'].to_i,
+      loser_score: row['score2'].to_i
     }
   end
 end
@@ -27,7 +29,7 @@ end
 
 def update_elo_ratings
   @histmatches.each do |match|
-    p @userwinner = User.where(nickname: match[:winner]).first
+    @userwinner = User.where(nickname: match[:winner]).first
     @userloser = User.where(nickname: match[:loser]).first
     k_factor = 32
     expected_score_winner = 1.0 / (1 + 10**(((@userloser&.points || 1500) - (@userwinner&.points || 1500)) / 400.0))
