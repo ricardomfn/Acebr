@@ -31,3 +31,22 @@
 body {
   background-color: white;
 }
+
+.custom-nav-item {
+  width: 100%;
+  text-align: center;
+}
+
+.custom-nav-item a {
+  color: #253343;
+  background-color: white;
+  transition: background-color 0.3s;
+  display: block;
+  padding: 10px;
+}
+
+.custom-nav-item a:hover,
+.custom-nav-item a:active {
+  background-color: #253343;
+  color: #EAF959;
+}

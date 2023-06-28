@@ -1,7 +1,7 @@
 <%= render 'shared/navbar_general' %>
 
 <div class="container">
-<h1 class="title mb-4">Nouveau Match</h1>
+<h1 class="title mb-4">Novo jogo</h1>
 
 <%= simple_form_for(@match) do |f| %>
 
@@ -16,32 +16,32 @@
   <%= f.input :date,
     as: :string,
     input_html: { data: { controller: "datepicker" }, class: "create-input" },
-    label:false, placeholder: "Date/Heure"
+    label:false, placeholder: "Data/Hora"
   %>
 
   <%= f.input :match_type,
     collection: Match::TYPES,
-    label:false, prompt: "Type de match",
+    label:false, prompt: "Tipo de jogo",
     input_html: { class: "create-input"}
   %>
   <%= f.input :modality,
     collection: Match::MODALITIES,
-    label:false, prompt: "simple/double",
+    label:false, prompt: "Simples/Duplas",
     input_html: { class: "create-input "}
   %>
 
   <%= f.input :price,
-    label:false, placeholder: "prix",
+    label:false, placeholder: "preço",
     input_html: { class: "create-input"}
   %>
 
   <%= f.input :level,
-    collection: [['Jamais joué', 0],['Débutant', 200],['Intermediaire', 400],['Confirmé', 600],['Expert', 800],['Elite',1000]],
-    label:false, prompt: "Niveau",
+    collection: [['Iniciante - 500pts', 500],['5a classe - 900pts', 900],['4a classe - 1200pts', 1200],['3a classe - 1300pts', 1300],['2a classe - 1400pts', 1400],['1a classe - 1700pts', 1700]],
+    label:false, prompt: "Nivel",
     input_html: { class: "create-input"}
   %>
 
-  <%= f.submit "Créer un match", class: "btn-ace mb-5" %>
+  <%= f.submit "Criar jogo", class: "btn-ace mb-5" %>
 <% end %>
 </div>
 

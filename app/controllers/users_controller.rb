@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @challenged_user = User.find(params[:id])
     @match = Match.new({
       address: "Guanambi, Brasil",
-      match_type: "Défi",
+      match_type: "Desafio",
       modality: "Simple",
       price: "10",
       level: "500",
@@ -28,4 +28,11 @@ class UsersController < ApplicationController
     @request = Request.new(status: 0, match_id: @match.id, user_id: current_user.id)
     @request.save
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
+  end
+
 end

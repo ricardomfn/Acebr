@@ -26,10 +26,10 @@
   <div class="show-match">
     <div class="user-infos">
             <div>
-              <p><span style="font-family: CherryBomb-Regular;font-size: 25px;"><%= @match.user.nickname %></span><em> (Lvl : <%= @match.user.points%> pts) </p></em>
+              <p><span style="font-family: CherryBomb-Regular;font-size: 25px;"><%= @match.user.nickname %></span><em> (<%= @match.user.points%> pts) </p></em>
               <p><i class="fa-solid fa-coins" style="color: #080808;margin-right:10px"></i><%= @match.price %> €</p>
-              <p> <i class="fa-solid fa-people-arrows" style="color: #050505; margin-right:10px"></i>Match <%= @match.modality %></p>
-              <p>Niveau recherché : <span><%= @match.level %> points </span></p>
+              <p> <i class="fa-solid fa-people-arrows" style="color: #050505; margin-right:10px"></i>Jogo <%= @match.modality %></p>
+              <p>Nivel: <span><%= @match.level %> pontos </span></p>
             </div>
     </div>
 
@@ -41,20 +41,20 @@
       </div>
       <div>
         <%= link_to chatroom_path(params: { user_id: @match.user.id }) do %>
-        <button class="btn-match2">Message</button>
+        <button class="btn-match2">Messagem</button>
         <% end %>
       </div>
     </div>
     <div class="defi-match">
-      <% if @match.match_type == "Défi" %>
+      <% if @match.match_type == "Desafio" %>
         <div>
           <i class="fa-solid fa-trophy" style="color: #253343; font-size: 40px;"></i>
-          <p class="p-2">Défi</p>
+          <p class="pt-2">Desafio</p>
         </div>
 
       <% else %>
-        <i class="fa-solid fa-face-smile" style="color: #253343; font-size: 40px; padding-left:5px"></i>
-        <p style="">Amical</p>
+        <i class="fa-solid fa-trophy" style="color: #253343; font-size: 40px;"></i>
+        <p class="pt-2">Amistoso</p>
       <% end %>
 
     </div>

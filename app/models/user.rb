@@ -1,8 +1,11 @@
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable
+
+  validates :email, uniqueness: true
 
   has_many :matches
   has_many :requests
@@ -20,6 +23,19 @@ class User < ApplicationRecord
   def name
     nickname
   end
+
+  def username
+    nickname
+  end
+
+
+  # def email_required?
+  #   false
+  # end
+
+  # def email_changed?
+  #   false
+  # end
 
   def chat_with?(user)
     chatroom_with(user).present?
