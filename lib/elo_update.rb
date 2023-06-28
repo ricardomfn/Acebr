@@ -16,12 +16,21 @@ def read_csv_and_update_elo_ratings
     winner = capitalize_names(winner_names)
     loser = capitalize_names(loser_names)
 
+<<<<<<< HEAD
     p match = {
       date: row[0],
       winner: winner,
       loser: loser,
       winner_score: row['score1'].to_i,
       loser_score: row['score2'].to_i
+=======
+    match = {
+      date: Date.parse(row[0]),
+      winner: winner,
+      loser: loser,
+      winner_score: row['winner_score'].to_i,
+      loser_score: row['loser_score'].to_i
+>>>>>>> 79fbb264b6f06cc41efd074517396bd3940c8217
     }
   end
 end
@@ -43,8 +52,43 @@ def update_elo_ratings
   end
 end
 
+def oldhist
+  data = CSV.read('public/match_hist.csv', headers: true, col_sep: ';')
+  @histmatches = data.map do |row|
+    winner_names = row['winner']&.split(' ')
+    loser_names = row['loser']&.split(' ')
+
+    winner = capitalize_names(winner_names)
+    loser = capitalize_names(loser_names)
+
+    oldmatch = Match.create({
+      address: "Guanambi, Brasil",
+      match_type: "Desafio",
+      modality: "Simple",
+      price: "1",
+      level: "0",
+      date: Date.parse(row[0]),
+      winner: winner,
+      winner_score: row['winner_score'].to_i,
+      loser: loser,
+      loser_score: row['loser_score'].to_i,
+      archived: true,
+      user_id: User.last.id
+    })
+    if oldmatch.valid? # Check if the object passes validations
+      oldmatch.save!
+      p "Match saved successfully!"
+    else
+      p oldmatch.errors.full_messages # Print out the error messages
+    end
+
+  end
+end
+
 # Run the method to update Elo ratings
 read_csv_and_update_elo_ratings
 update_elo_ratings
+oldhist
+
 
 #rails runner "require './lib/elo_update'; update_elo_ratings"
